@@ -10,8 +10,8 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh > /
 
 RUN apt-get install -y vim git bash-completion
 
-RUN curl -L -o- https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb > /tmp/pandoc.deb
-RUN sudo dpkg -i /tmp/pandoc.deb
+#RUN curl -L -o- https://github.com/jgm/pandoc/releases/download/2.18/pandoc-2.18-1-amd64.deb > /tmp/pandoc.deb
+#RUN sudo dpkg -i /tmp/pandoc.deb
 
 COPY ./ /devcontainer/
 
@@ -21,7 +21,7 @@ RUN mkdir /projects && touch /.dockerenv
 
 RUN /devcontainer/bin/user-build.sh --uid ${vscode_uid}
 
-RUN su - vscode /bin/bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh > /home/vscode/nvm-install.sh && bash /home/vscode/nvm-install.sh'
+RUN su -p vscode /bin/bash -c 'unset NVM_DIR; HOME=/home/vscode; curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh > /home/vscode/nvm-install.sh && bash /home/vscode/nvm-install.sh'
 
-RUN su - vscode /bin/bash -c 'NVM_DIR=$HOME/.nvm; source $NVM_DIR/nvm.sh; nvm install 18 && npm install -g npm@8.13.1'
+RUN su -p vscode /bin/bash -c 'HOME=/home/vscode;NVM_DIR=$HOME/.nvm; source $NVM_DIR/nvm.sh; nvm install 16 && npm install -g npm@8.13.1'
 
