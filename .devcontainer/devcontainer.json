@@ -1,0 +1,26 @@
+{
+	"name": "React Learn",
+
+	"dockerComposeFile": [
+		"docker-compose.yaml"
+	],
+
+	"service": "react",
+	"workspaceFolder": "/workspace",
+
+
+	"extensions": [
+        "ritwickdey.liveserver"
+	],
+
+    "initializeCommand": [
+        ".devcontainer/bin/initializeCommand.sh"
+    ],
+
+	"postStartCommand": [
+        ".devcontainer/bin/postStartCommand.sh"
+    ],
+    "shutdownAction": "none",
+
+	"remoteUser": "vscode"
+}

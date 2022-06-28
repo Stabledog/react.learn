@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+    react:
+        build:
+          dockerfile: ./Dockerfile
+          context: ./
+
+        volumes:
+          - ${PWD}:/workspace
+          - ${HOME}:/host_home:ro
+          - ${HOME}/.ssh:/home/vscode/.ssh
+
+        command: /bin/sh -c "while sleep 1000; do :; done"
+        init: true
+        container_name: react
+        environment:
+          HOST_USER: ${USER}
+          HOST_WORKSPACE_DIR: ${PWD}
+          HOST_HOME: ${HOME}
+
