@@ -3,8 +3,8 @@ ARG vscode_uid=1000
 # See the 'make-base-image-*.sh' scripts to answer 'where does this devimage come from?'
 FROM react-devimage
 
-RUN apt update && apt-get install -y sudo curl locales python3.10
-RUN locale-gen en_US.UTF-8
+RUN apt-get update && apt-get install -y curl python3.10
+
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh > /root/nvm-install.sh && bash /root/nvm-install.sh
 
